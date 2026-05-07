@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Shyam Yadav | Portfolio</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+         :root {
+            --text: white;
+            --card: rgba(255, 255, 255, 0.1);
+        }
+        
+        body.light {
+            --text: black;
+            --card: rgba(0, 0, 0, 0.08);
+        }
+        
+        body {
+            font-family: Arial;
+            margin: 0;
+            color: var(--text);
+            background: linear-gradient(-45deg, #0f2027, #203a43, #2c5364);
+            background-size: 400% 400%;
+            animation: gradientMove 10s ease infinite;
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+        
+        @keyframes gradientMove {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+        /* NAV */
+        
+        nav {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            background: rgba(0, 0, 0, 0.3);
+            padding: 12px;
+            position: sticky;
+            top: 0;
+            backdrop-filter: blur(10px);
+            z-index: 100;
+        }
+        
+        nav a {
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 500;
+        }
+        
+        nav a:hover {
+            color: #00ffff;
+        }
+        
+        .toggle {
+            position: absolute;
+            right: 15px;
+            cursor: pointer;
+        }
+        /* HEADER */
+        
+        header {
+            text-align: center;
+            padding: 50px 20px;
+        }
+        
+        header img {
+            width: 130px;
+            height: 130px;
+            border-radius: 50%;
+            border: 3px solid #00ffff;
+        }
+        
+        h1 {
+            text-shadow: 0 0 10px #00ffff;
+            margin-top: 10px;
+        }
+        
+        .typing {
+            font-size: 18px;
+            color: #00ffff;
+            margin-top: 10px;
+        }
+        /* SECTION */
+        
+        section {
+            padding: 20px;
+            max-width: 900px;
+            margin: auto;
+        }
+        
+        .card {
+            background: var(--card);
+            padding: 20px;
+            margin: 15px 0;
+            border-radius: 15px;
+            transition: 0.4s;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        
+        .card.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .btn {
+            padding: 10px 20px;
+            border: 2px solid #00ffff;
+            border-radius: 25px;
+            color: var(--text);
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 10px;
+        }
+        
+        .btn:hover {
+            background: #00ffff;
+            color: black;
+        }
+        
+        .projects {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+        
+        .project {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 15px;
+            border-radius: 10px;
+            transition: 0.3s;
+        }
+        
+        .project:hover {
+            transform: scale(1.05);
+        }
+        
+        input,
+        textarea {
+            width: 100%;
+            padding: 10px;
+            border-radius: 10px;
+            border: none;
+            margin-top: 5px;
+        }
+        
+        button {
+            padding: 10px 20px;
+            border: none;
+            background: #00ffff;
+            border-radius: 20px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 15px;
+            opacity: 0.7;
+        }
+        
+        .whatsapp-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #25D366;
+            padding: 15px;
+            border-radius: 50px;
+            color: white;
+            text-decoration: none;
+        }
+        
+        canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: -1;
+        }
+    </style>
+</head>
+
+<body>
+
+    <canvas id="particles"></canvas>
+
+    <nav>
+        <a href="#">Home</a>
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+        <span class="toggle" onclick="toggleMode()">🌙</span>
+    </nav>
+
+    <header>
+        <img src="photo.jpg">
+        <h1>Shyam Yadav</h1>
+        <p class="typing" id="typing"></p>
+        <a class="btn" href="#">Download Resume</a>
+    </header>
+
+    <section>
+
+        <div class="card" id="about">
+            <h2>About Me</h2>
+            <p>I am learning web development and building modern websites.</p>
+            <a href="mailto:shyamyadav080077@gmail.com" class="btn">Email Me</a>
+        </div>
+
+        <div class="card" id="projects">
+            <h2>Projects</h2>
+            <div class="projects">
+                <div class="project">Portfolio Website</div>
+                <div class="project">Calculator App</div>
+                <div class="project">Landing Page</div>
+            </div>
+        </div>
+
+        <div class="card" id="contact">
+            <h2>Contact Me</h2>
+            <form>
+                <input placeholder="Name">
+                <input placeholder="Email">
+                <textarea placeholder="Message"></textarea>
+                <button>Send</button>
+            </form>
+        </div>
+
+    </section>
+
+    <a class="whatsapp-btn" href="https://wa.me/9779704914727">💬</a>
+
+    <footer>© 2026 Shyam Yadav</footer>
+
+    <script>
+        // typing
+        const text = ["Web Developer 💻", "UI Designer 🎨", "JavaScript Dev 🚀"];
+        let i = 0,
+            j = 0,
+            del = false;
+
+        function type() {
+            let cur = text[i];
+            j = del ? j - 1 : j + 1;
+            document.getElementById("typing").innerHTML = cur.substring(0, j);
+
+            if (!del && j === cur.length) {
+                del = true;
+                setTimeout(type, 1000);
+                return;
+            }
+            if (del && j === 0) {
+                del = false;
+                i = (i + 1) % text.length;
+            }
+
+            setTimeout(type, del ? 50 : 100);
+        }
+
+        type();
+
+        // toggle mode
+        function toggleMode() {
+            document.body.classList.toggle("light");
+        }
+
+        // scroll reveal
+        const cards = document.querySelectorAll(".card");
+        window.addEventListener("scroll", () => {
+            cards.forEach(c => {
+                if (c.getBoundingClientRect().top < 600) {
+                    c.classList.add("show");
+                }
+            });
+        });
+
+        // particles
+        const canvas = document.getElementById("particles");
+        const ctx = canvas.getContext("2d");
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        let particles = [];
+        for (let i = 0; i < 60; i++) {
+            particles.push({
+                x: Math.random() * canvas.width,
+                y: Math.random() * canvas.height,
+                r: 2
+            });
+        }
+
+        function draw() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ctx.fillStyle = "#00ffff";
+
+            particles.forEach(p => {
+                ctx.beginPath();
+                ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+                ctx.fill();
+                p.y += 0.5;
+                if (p.y > canvas.height) p.y = 0;
+            });
+
+            requestAnimationFrame(draw);
+        }
+
+        draw();
+    </script>
+
+</body>
+
+</html>
